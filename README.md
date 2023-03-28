@@ -37,6 +37,7 @@ undefined
 /* Para ver que tipo de dato es Valor */
 typeof Valor
 ```
+
 ## Variables
 
 ```
@@ -55,3 +56,29 @@ var persona = {
     edad
 }
 ```
+
+## Funciones
+
+**Declarativas**
+
+```
+function miFuncion() {
+    return 3;
+}
+
+miFuncion();
+```
+
+**Expresivas**
+
+```
+var mifuncion = function(a,b){
+    return a+b;
+}
+
+miFuncion();
+```
+
+## Scope
+
+El scope es cada uno de los entornos donde las variables tienen alcance dentro del código de JavaScript. En otras palabras, determina que valor tendrá la variable dependiendo dónde se encuentre.
