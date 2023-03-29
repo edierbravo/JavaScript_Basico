@@ -13,7 +13,7 @@ JS es Backwards Compatible, es decir que es compatible con versiones anteriores,
 
 ## Valores 
 
-```
+```js
 /* Numericos */
 40
 
@@ -40,7 +40,7 @@ typeof Valor
 
 ## Variables
 
-```
+```js
 // Para definir variables se usa la palabra var
 var nombre = "Edier";
 
@@ -61,7 +61,7 @@ var persona = {
 
 **Declarativas**
 
-```
+```js
 function miFuncion() {
     return 3;
 }
@@ -71,7 +71,7 @@ miFuncion();
 
 **Expresivas**
 
-```
+```js
 var mifuncion = function(a,b){
     return a+b;
 }
@@ -87,7 +87,7 @@ lo que esta en el scope global se puede acceder desde cualquier lugar, pero algo
 
 ![Scope](https://github.com/edierbra/JavaScript_Basico/blob/master/images/scope.png?raw=true)
 
-```
+```js
 // scope global
 var nombre = "JavaScript"
 
@@ -105,20 +105,20 @@ Hoisting es un término para describir que las declaraciones de variables y func
 
 El código permanece igual, solo es una interpretación del motor de JavaScript. En el caso de las variables solamente sucede cuando son declaradas con var.
 
-El tema de Hoisting solo sucede con las declaraciones de variables y funciones, por lo que se** recomienda declarar las variables y las funciones lo más arriba posible del código**, para evitar errores. También, el tema de hoisting ya está solucionado con las nuevas formas de declarar variables con let y const.
+El tema de Hoisting solo sucede con las declaraciones de variables y funciones, por lo que se recomienda declarar las variables y las funciones lo más arriba posible del código, para evitar errores. También, el tema de hoisting ya está solucionado con las nuevas formas de declarar variables con let y const.
 
 **Ejemplo con variables:**
 
 Al digitar las siguientes la respuesta del console.log es undefined, porque al hacer referencia a una variable que no está declarada aún, JavaScript crea esta variable antes de declararla y le asigna un valor de undefined.
 
-```
+```js
 console.log(nombre) // undefined
 var nombre = "Andres"
 ```
 
 Lo que JavaScript está haciendo sería lo siguiente:
 
-```
+```js
 // Hoistin: Declara y asigna undefined
 var nombre = undefined
 console.log(nombre) // undefined
@@ -129,7 +129,7 @@ nombre = "Andres"
 
 La respuesta del siguiente codigo es "Hola", porque al invocar una función que no está declarada, JavaScript la eleva y por eso podemos invocar una función antes de declararla.
 
-```
+```js
 console.log( saludar() )
 
 function saludar() {
@@ -139,7 +139,7 @@ function saludar() {
 
 Pero, lo que realmente sucede es que JavaScript guarda la función en memoria en la fase de creación de un contexto de ejecución, no asigna undefined como con las variables.
 
-```
+```js
 // Hoisting: Declara la función antes de ser invocada
 function saludar() {
   return "Hola"
@@ -154,7 +154,7 @@ console.log( saludar() ) // "Hola"
 
 La coerción implícita consiste en la transformación de tipos mediante la ayuda de JavaScript. Esto ocurre en operaciones de diferentes tipos, ya que es un lenguaje débil y dinámicamente tipado. Al momento de compilar el código, el motor de JavaScript, si encuentra alguna incoherencia (una suma de un número con un string), el motor lo interpreta a su manera y arroja un valor que puede ser erróneo.
 
-```
+```js
 4 + "7" // "47"
 4 * "7" // 28
 2 + true // 3
@@ -166,7 +166,7 @@ false - 3 // -3
 
 La coerción explícita es la transformación de tipos de datos que controlamos el resultado. Para realizar estas transformaciones utiliza las funciones Number(), String() y Boolean(), para convertir a tipo número, string y lógico, respectivamente.
 
-```
+```js
 Number("47") // 47
 String(51) // "51"
 Boolean(1) // true
@@ -180,7 +180,7 @@ Los valores truthy y falsy son valores verdaderos y falsos cuando se realiza una
 
 Un valor falsy es aquel que es falso en un contexto booleano
 
-```
+```js
 // Coersión explícita
 Boolean(0) // false
 Boolean("") // false
@@ -192,7 +192,7 @@ Boolean(false) // false
 
 También puedes realizar una coerción implícita con el operador de negación (!), pero solo es para que la conozcas, no es recomendable.
 
-```
+```js
 // Coersión implícita (no la uses)
 !!0 // false
 !!"" // false
@@ -206,7 +206,7 @@ También puedes realizar una coerción implícita con el operador de negación (
 
 Un valor truthy es aquel que es verdadero en un contexto booleano, son todos los valores que no sean falsy, que especificamos en la anterior sección.
 
-```
+```js
 // Coersión explícita
 Boolean([]) // true
 Boolean({}) // true
@@ -224,7 +224,7 @@ Boolean({ a: 1, b: 2 }) // true
 
 Los operadores aritméticos se utilizan para efectuar operaciones matemáticas.
 
-```
+```js
 // Suma
 2 + 3 // 5
 // Resta
@@ -241,7 +241,7 @@ Recuerda que no existe la división entre 0. En ese caso JavaScript devolverá e
 
 El operador de residuo (`%`), el signo de porcentaje, devuelve el residuo de una división.
 
-```
+```js
 //Residuo
 21 % 5 // 1
 ```
@@ -250,7 +250,7 @@ El operador de residuo (`%`), el signo de porcentaje, devuelve el residuo de una
 
 El operador de concatenación consiste en unir dos o más strings.
 
-```
+```js
 "Hola " + "Platzi" // "Hola Platzi"
 ```
 
@@ -258,7 +258,7 @@ El operador de concatenación consiste en unir dos o más strings.
 
 El operador de incremento (`++`) y decremento (`--`) consiste en aumentar o disminuir una unidad a una variable, respectivamente. Estos operadores se pueden emplear antes y después de la variable.
 
-```
+```js
 variable++
 variable--
 ++variable
@@ -267,7 +267,7 @@ variable--
 
 Sin embargo, si se emplea antes o después, el comportamiento es diferente. Si está previamente, el valor de la variable aumenta y devuelve el valor nuevo. Si está después, el valor de la variable aumenta, pero devuelve el valor anterior.
 
-```
+```js
 var a = 3
 var b = 3
 
@@ -281,7 +281,7 @@ console.log(b) //4
 
 El operador de asignación (`=`) consiste en asignar un valor a una variable.
 
-```
+```js
 var saludo = "Hola Mundo"
 ```
 
@@ -289,7 +289,7 @@ var saludo = "Hola Mundo"
 
 En ciertos casos, reasignarás la misma variable más otro valor. Estas variables pueden utilizarse como acumuladores o contadores.
 
-```
+```js
 var contador = 1
 contador = contador + 1
 contador = contador + 1
@@ -324,7 +324,7 @@ Un operador de comparación compara dos o más valores y devuelve un valor lógi
 
 Un condicional evalúa si una expresión o condición es verdadera
 
-```
+```js
 if (edad >= 18){
     console.log("Puedes conducir")
 }
@@ -334,7 +334,7 @@ if (edad >= 18){
 
 La palabra reservada else evalúa cuando la expresión del `if` es falsa, pero no es obligatorio colocarlo.
 
-```
+```js
 if (edad >= 18){
     console.log("Puedes conducir")
 } else {
@@ -346,7 +346,7 @@ if (edad >= 18){
 
 Se usa la pañabra reservada `else if` para validar diferentes condiciones. Sin embargo, JavaScript evalúa la primera condición, luego a la segunda, y así sucesivamente.
 
-```
+```js
 if (condicion1){
    // Bloque 1
 } else if (condicion2){
@@ -362,19 +362,19 @@ if (condicion1){
 
 El operador ternario consiste en evaluar en una sola linea si una expresión es verdadera o falsa. La estructura que sigue es la siguiente y se lee como: "La condición es verdadera (`?`), si es así ejecuta el “Bloque verdadero”, caso contrario (`:`), ejecuta el “Bloque falso”.
 
-```
+```js
 condicion ? Bloque verdadero : Bloque falso
 ```
 
 Ejemplo:
 
-```
+```js
 function esPar(numero){
     return numero % 2 === 0 ? "Es par" : "No es par"
 }
 ```
 
-```
+```js
 var age = 16;
 
 var url = age > 18 ? (
@@ -396,7 +396,7 @@ La estructura `switch` es otra manera de evaluar condiciones, la diferencia con 
 
 El siguiente codigo  se lee: evalúa (`switch`) la variable expresion, en el caso de que sea igual a uno (`case 1`), entonces ejecuta el bloque 1 y termina (`break`), en el caso de que sea igual a dos (`case 2`), entonces ejecuta el bloque 2 y termina (`break`), si no se cumple ninguna, ejecuta un bloque por defecto (`default`).
 
-```
+```js
 switch (expresion) {
     case 1: 
         // Bloque 1
@@ -416,7 +416,7 @@ Un array es una estructura de datos que permite almacenar una serie de datos loc
 
 El índice es la forma en que accedemos a los elementos de los arrays. En JavaScript, los índices empiezan desde 0, es decir, la primera posición es el índice 0. Un array se inicia mediante la sintaxis de corchetes [] y es tipo de dato objeto.
 
-```
+```js
 var miarray = ["Andres", "Ramiro", "Silvia"] // Se crea un array
 var longitud = miarray.length // Tamaño del array
 miarray[1] // acceder al elemento 1 que tiene como contenido "Ramiro"
@@ -429,7 +429,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     El método push agrega uno o varios elementos al final del array original. El método recibe como argumento los valores a agregar. Retorna el número de elementos del array mutado.
 
-    ```
+    ```js
     var array = [1,2,3]
     array.push(4,5)
     console.log(array) // [ 1, 2, 3, 4, 5 ]
@@ -439,7 +439,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     El método unshift agrega uno o varios elementos al inicio del array original. El método recibe como argumento los valores a agregar. Retorna el número de elementos del array mutado.
 
-    ```
+    ```js
     var array = [3,4,5]
     array.unshift(1,2)
     console.log(array) // [ 1, 2, 3, 4, 5 ]
@@ -449,7 +449,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     El método pop extrae y elimina el elemento del final del array original.
 
-    ```
+    ```js
     var array = [1,2,3,4]
     var lastElement = array.pop()
     console.log(lastElement) // 4
@@ -460,7 +460,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     El método shift extrae y elimina el elemento del inicio del array original.
 
-    ```
+    ```js
     var array = [1,2,3,4]
     var firstElement = array.shift()
     console.log(firstElement) // 1
@@ -471,7 +471,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     El método indexOf muestra el índice del elemento especificado como argumento.
 
-    ```
+    ```js
     var array = [1,2,3,4]
     var index = array.indexOf(2)
     console.log(index) // 1
@@ -482,7 +482,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     Estructura:
 
-    ```
+    ```js
     splice(posicion inicial, posicion final, item1, item2, ...) 
     // los item1, item 2, ... son los que 
     // voy a remmplazar en los elementos eliminados
@@ -490,7 +490,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     splice(posicion inicial)
 
-    ```
+    ```js
     var array = [0,1,2,3,4,5];
     var a = array.splice(1);
     console.log(a); // [1,2,3,4,5]
@@ -499,7 +499,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     splice(posicion inicial, posicion final)
 
-    ```
+    ```js
     var array = [0,1,2,3,4,5];
     var a = array.splice(3,2);
     console.log(a); // [3,4]
@@ -508,7 +508,7 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
 
     splice(posicion inicial, posicion final, item1, item2, ...)
 
-    ```
+    ```js
     var array = [0,1,2,3,4,5];
     var a = array.splice(2,10,11,12);
     console.log(a); // [2,3,4,5]
@@ -525,7 +525,7 @@ Un bucle (loop) o ciclo repetitivo es una estructura de control que te permite r
 
 Estructura:
 
-```
+```js
 for (condición) {
     // Bloque de código
 }
@@ -533,7 +533,7 @@ for (condición) {
 
 Ejemplo:
 
-```
+```js
 for (var num = 1; num <= 10; num++) {
   console.log(num) // 1 2 3 4 5 6 7 8 9 10
 }
@@ -543,7 +543,7 @@ for (var num = 1; num <= 10; num++) {
 
 Estructura:
 
-```
+```js
 for (for (var elemento of array){
     //Bloque de código
 }) {
@@ -553,7 +553,7 @@ for (for (var elemento of array){
 
 Ejemplo:
 
-```
+```js
 var array = [5, 4, 3, 2, 1]
 
 for (var elemento of array) {
@@ -565,7 +565,7 @@ for (var elemento of array) {
 
 Estructura:
 
-```
+```js
 while (condición) {
     // Bloque de código
     // Cambiar la condición para salir del bucle
@@ -574,7 +574,7 @@ while (condición) {
 
 Ejemplo:
 
-```
+```js
 var numero = 1
 
 while ( numero <= 10 ){
@@ -589,7 +589,7 @@ Un objeto es una estructura de datos que permite almacenar valores mediante prop
 
 En las propiedades del objeto es opcional colocar las comillas. En el caso de que haya espacios, es obligatorio.
 
-```
+```js
 var objeto = {
     clave1: "valor1",
    "clave 2": "valor2",
@@ -602,7 +602,7 @@ Excepto por los primitivos y las funciones, todo es un objeto en JavaScript.
 
 Objeto
 
-```
+```js
 var miauto = {
     marca: "Toyota",
     modelo: "Corolla",
@@ -615,7 +615,7 @@ var miauto = {
 
 Aceder a propiedades de un objeto
 
-```
+```js
 miauto.marca; // aceder a la propiedad marca con notacion de puntos
 
 miauto.detalleDeAuto(); // aceder a la propiedad detalleDeAuto con notacion de punto, se usa () por que la propiedad es una funcion, al no hacerlo la salida es: f detalleDeAuto()
@@ -627,28 +627,28 @@ miauto["detalleDeAuto"](); // aceder a la propiedad detalleDeAuto con notacion d
 
 Añadir propiedades de un objeto
 
-```
+```js
 miAuto["color"] = "rojo" // notacion corchete
 miAuto.color = "rojo" // notacion punto
 ```
 
 Modificar propiedades de un objeto
 
-```
+```js
 miAuto["marca"] = "Ford" // notacion corchete
 miAuto.marca = "Ford" // notacion punto
 ```
 
 Eliminar propiedades de un objeto
 
-```
+```js
 delete miAuto["marca"] // notacion corchete 
 delete miAuto.marca // notacion punto
 ```
 
 ## Objects: Función constructora
 
-```
+```js
 // Constructor
 function auto(marca, modelo, annio){ 
     this.marca = marca;
@@ -669,7 +669,7 @@ var autoNuevo = new auto("Tesla", "Model Y", 20215);
 
 Array de ejemplo:
 
-```
+```js
 // Array de objetos
 var articulos = [
     { nombre: "Bici", costo: 3000},
@@ -686,7 +686,7 @@ var articulos = [
 
 El método filter consiste en crear un nuevo array a partir de los elementos originales filtrados mediante una función (callback) que indica la condición a cumplir y es inmutable. Si la condición se cumple, retorna el elemento completo.
 
-```
+```js
 // El resultado se guardan en articulosFiltrados
 var articulosFiltrados = articulos.filter(function(articulo){
     return articulo.costo <= 500;
@@ -703,7 +703,7 @@ console.log(articulosFiltrados)
 
 El método map es inmutable y consiste en crear un nuevo array a partir de los elementos originales transformados mediante una función (callback).
 
-```
+```js
 // El resultado se guardan en nombreArticulos
 var nombreArticulos = articulos.map(function(articulo){
     return articulo.nombre;
@@ -719,7 +719,7 @@ console.log(nombreeArticulos)
 
 El método find consiste en encontrar el primer elemento de un array que cumpla con la condición especificada en la función (callback). Si ningún elemento cumpla con la condición, retornará undefined
 
-```
+```js
 // Metodo find: el resultado se guardan en encuentreArticulo
 var encuentreArticulo = articulos.find(function(articulo){
     return articulo.nombre === "Laptop";
@@ -735,7 +735,7 @@ console.log(encuentreArticulo)
 
 El método forEach de los arrays consiste en ejecutar una función (callback) para cada uno de los elementos iterados. Iterar significa repetir una acción varias veces. Este método no retorna ningún valor.
 
-```
+```js
 articulos.forEach(function(articulo){
     console.log(articulo.nombre);
 });
@@ -752,7 +752,7 @@ articulos.forEach(function(articulo){
 
 El método somees inmutable y consiste retornar un valor lógico verdadero si existe al menos un elemento que cumpla la condición establecida en la función (callback).
 
-```
+```js
 var articulosBaratos = articulos.some(function(articulo){
     return articulo.costo <= 700;
 });
