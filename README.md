@@ -476,6 +476,46 @@ nombres[1] = "Platzi" // Reemplaza Ramiro por "Platzi"
     var index = array.indexOf(2)
     console.log(index) // 1
     ```
+- splice
+
+    El metodo splice permite eliminar y reemplazar elementos dentro de un array
+
+    Estructura:
+
+    ```
+    splice(posicion inicial, posicion final, item1, item2, ...) 
+    // los item1, item 2, ... son los que 
+    // voy a remmplazar en los elementos eliminados
+    ```
+
+    splice(posicion inicial)
+
+    ```
+    var array = [0,1,2,3,4,5];
+    var a = array.splice(1);
+    console.log(a); // [1,2,3,4,5]
+    console.log(array); // 0
+    ```
+
+    splice(posicion inicial, posicion final)
+
+    ```
+    var array = [0,1,2,3,4,5];
+    var a = array.splice(3,2);
+    console.log(a); // [3,4]
+    console.log(array); // [0,1,2,5]
+    ```
+
+    splice(posicion inicial, posicion final, item1, item2, ...)
+
+    ```
+    var array = [0,1,2,3,4,5];
+    var a = array.splice(2,10,11,12);
+    console.log(a); // [2,3,4,5]
+    console.log(array); // [0,1,11,12]
+    ```
+
+
 
 ## Loops
 
@@ -545,3 +585,188 @@ while ( numero <= 10 ){
 
 ## Objetos
 
+Un objeto es una estructura de datos que permite almacenar valores mediante propiedad - valor a través de la sintaxis de llaves (`{}`) y separados por comas.
+
+En las propiedades del objeto es opcional colocar las comillas. En el caso de que haya espacios, es obligatorio.
+
+```
+var objeto = {
+    clave1: "valor1",
+   "clave 2": "valor2",
+}
+```
+
+Excepto por los primitivos y las funciones, todo es un objeto en JavaScript.
+
+**Ejemplo:**
+
+Objeto
+
+```
+var miauto = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    annio: 2020,
+    detalleDeAuto: fuction(){
+        consolo.log(`Auto ${this.modelo} ${this.annio}`) // Auto Corolla 2020, this hace referencia a mismo objeto y tampien se puede reemplazrlo por el nombre del objeto que en este caso es miauto
+    }
+}
+```
+
+Aceder a propiedades de un objeto
+
+```
+miauto.marca; // aceder a la propiedad marca con notacion de puntos
+
+miauto.detalleDeAuto(); // aceder a la propiedad detalleDeAuto con notacion de punto, se usa () por que la propiedad es una funcion, al no hacerlo la salida es: f detalleDeAuto()
+
+miauto["marca"]; // aceder a la propiedad marca con notacion de corchetes
+
+miauto["detalleDeAuto"](); // aceder a la propiedad detalleDeAuto con notacion de corchetes, se usa () por que la propiedad es una funcion, al no hacerlo la salida es: f detalleDeAuto()
+```
+
+Añadir propiedades de un objeto
+
+```
+miAuto["color"] = "rojo" // notacion corchete
+miAuto.color = "rojo" // notacion punto
+```
+
+Modificar propiedades de un objeto
+
+```
+miAuto["marca"] = "Ford" // notacion corchete
+miAuto.marca = "Ford" // notacion punto
+```
+
+Eliminar propiedades de un objeto
+
+```
+delete miAuto["marca"] // notacion corchete 
+delete miAuto.marca // notacion punto
+```
+
+## Objects: Función constructora
+
+```
+// Constructor
+function auto(marca, modelo, annio){ 
+    this.marca = marca;
+    this.modelo = modelo;
+    this.annio = annio;
+    this.detalle = function () {
+        console.log(`Auto ${this.modelo} del ${this.annio}.`)
+    }
+}
+
+// Crear un auto
+var autoNuevo = new auto("Toyota", "Model 3", 2020); 
+// Crear otro auto
+var autoNuevo = new auto("Tesla", "Model Y", 20215);
+```
+
+## Metodos de recorrido de Arrays
+
+Array de ejemplo:
+
+```
+// Array de objetos
+var articulos = [
+    { nombre: "Bici", costo: 3000},
+    { nombre: "Tv", costo: 2500},
+    { nombre: "Libro", costo: 320},
+    { nombre: "Celular", costo: 10000},
+    { nombre: "Laptop", costo: 20000},
+    { nombre: "Teclado", costo: 500},
+    { nombre: "Audifonos", costo: 1700},
+];
+```
+
+**Metodo filter**
+
+El método filter consiste en crear un nuevo array a partir de los elementos originales filtrados mediante una función (callback) que indica la condición a cumplir y es inmutable. Si la condición se cumple, retorna el elemento completo.
+
+```
+// El resultado se guardan en articulosFiltrados
+var articulosFiltrados = articulos.filter(function(articulo){
+    return articulo.costo <= 500;
+});
+console.log(articulosFiltrados)
+
+/* [
+  { nombre: 'Libro', costo: 320 },
+  { nombre: 'Teclado', costo: 500 }
+] */
+```
+
+**Metodo map**
+
+El método map es inmutable y consiste en crear un nuevo array a partir de los elementos originales transformados mediante una función (callback).
+
+```
+// El resultado se guardan en nombreArticulos
+var nombreArticulos = articulos.map(function(articulo){
+    return articulo.nombre;
+});
+console.log(nombreeArticulos)
+
+/* 
+[ 'Bici', 'TV', 'Libro', 'Celular', 'Laptop', 'Teclado', 'Audifonos' ]
+*/
+```
+
+**Metodo find**
+
+El método find consiste en encontrar el primer elemento de un array que cumpla con la condición especificada en la función (callback). Si ningún elemento cumpla con la condición, retornará undefined
+
+```
+// Metodo find: el resultado se guardan en encuentreArticulo
+var encuentreArticulo = articulos.find(function(articulo){
+    return articulo.nombre === "Laptop";
+});
+console.log(encuentreArticulo)
+
+/* 
+{ nombre: 'Laptop', costo: 20000 }
+*/
+```
+
+**Metodo forEach**
+
+El método forEach de los arrays consiste en ejecutar una función (callback) para cada uno de los elementos iterados. Iterar significa repetir una acción varias veces. Este método no retorna ningún valor.
+
+```
+articulos.forEach(function(articulo){
+    console.log(articulo.nombre);
+});
+
+/* 
+{ nombre: 'Bici', costo: 3000 }
+{ nombre: 'TV', costo: 2500 }
+...
+{ nombre: 'Audifonos', costo: 1700 }
+*/
+```
+
+**Metodo some**
+
+El método somees inmutable y consiste retornar un valor lógico verdadero si existe al menos un elemento que cumpla la condición establecida en la función (callback).
+
+```
+var articulosBaratos = articulos.some(function(articulo){
+    return articulo.costo <= 700;
+});
+console.log(articulosBaratos)
+
+// true
+```
+
+# Recomendaciones:
+
+Tomar los siguientes cursos en Platzi
+
+- Fundamentos de JavaScript
+- V8 y el navegador
+- ECMAScript 6+
+
+# No pares de aprender ❤️❤️❤️❤️
