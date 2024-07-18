@@ -85,7 +85,7 @@ El scope es cada uno de los entornos donde las variables tienen alcance dentro d
 
 lo que esta en el scope global se puede acceder desde cualquier lugar, pero algo que esta solo en el scope local solo se puede acceder de donde se declara.
 
-![Scope](https://github.com/edierbra/JavaScript_Basico/blob/master/images/scope.png?raw=true)
+![Scope](images/scope.png?raw=true)
 
 ```js
 // scope global
@@ -296,7 +296,7 @@ contador = contador + 1
 console.log(contador) // 3
 ```
 
-![Asignacion combinada](https://github.com/edierbra/JavaScript_Basico/blob/master/images/asignacionCombinada.png?raw=true)
+![Asignacion combinada](images/asignacionCombinada.png?raw=true)
 
 **Operadores de comparación**
 
